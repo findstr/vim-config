@@ -8,6 +8,12 @@ set backspace=indent,eol,start
 "显示行号
 set nu
 
+"标签
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1
+
 "windows manger
 let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
@@ -62,7 +68,7 @@ set autoread
 
 "Enable filetype plugin
 filetype plugin indent on
-
+au BufRead,BufNewFile *.go set filetype=go
 "设置配色方案为torte
 "colo torte
 colo desert
@@ -181,7 +187,7 @@ let Tlist_Process_File_Always=1
 let Tlist_Auto_Open=1
 
 "设置搜索的tags文件范围
-set tags=./tags,./../tags,./http://www.cnblogs.com/tags,/usr/include/tags,/usr/src/linux-3.2.6/include/tags
+set tags=./tags,./../tags,./../../tags,./../../../tags,./http://www.cnblogs.com/tags,/usr/include/tags,/usr/src/linux-3.2.6/include/tags
 
 "--MiniBufferExplorer--
 let g:miniBufExplMapWindowNavVim=1
@@ -199,33 +205,6 @@ endif
 
 "定义函数SetTitle，自动插入文件头
 func SetTitle()
-        "如果文件类型为.sh文件
-        if &filetype == 'sh' || &filetype == 'python'
-                call setline(1, "\#========================================================================")
-                call append(line("."), "\# Author: findstr")
-                call append(line(".")+1, "\# Email: findstr@sina.com")
-                call append(line(".")+2, "\# File Name: ".expand("%"))
-                call append(line(".")+3, "\# Description: ")
-                call append(line(".")+4, "\#   ")
-                call append(line(".")+5, "\# Edit History: ")
-                call append(line(".")+6, "\#   ".strftime("%Y-%m-%d")."    File created.")
-                call append(line(".")+7, "\#========================================================================")
-                call append(line(".")+8, "")
-                "其它程序文件
-        else
-                call setline(1, "/**")
-                call append(line("."), "=========================================================================")
-                call append(line(".")+1, " Author: findstr")
-                call append(line(".")+2, " Email: findstr@sina.com")
-                call append(line(".")+3, " File Name: ".expand("%"))
-                call append(line(".")+4, " Description: (C)  ".strftime("%Y-%m"). "  findstr")
-                call append(line(".")+5, "   ")
-                call append(line(".")+6, " Edit History: ")
-                call append(line(".")+7, "   ".strftime("%Y-%m-%d")."    File created.")
-                call append(line(".")+8, "=========================================================================")
-                call append(line(".")+9, "**/")
-                call append(line(".")+10, "")
-        endif
         "如果为php文件，添加相应头和尾
         if &filetype == 'php'
                 call append(0, "<?php")

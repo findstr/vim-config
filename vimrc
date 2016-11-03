@@ -9,9 +9,9 @@ set backspace=indent,eol,start
 set nu
 
 "标签
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 "windows manger
@@ -108,7 +108,7 @@ autocmd BufReadPost *
 \ exe "normal g`\"" |
 \ endif
 
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :call StripTailWhitespaces()
 
 "新建.c,.h.cpp,.sh,.java,.php,.py文件自动打开Taglist
 autocmd BufNewFile *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":call SetTitle()"
@@ -142,7 +142,7 @@ set completeopt=longest,menu
 
 "设置当回复邮件时自动定位到最后一行
 autocmd BufRead /tmp/mutt-* normal G
-"autocmd BufRead /tmp/mutt-* normal $ 
+"autocmd BufRead /tmp/mutt-* normal $
 "绑定自动补全的快捷键<C-X><C-O>到<leader>;
 imap <leader>; <C-X><C-O>
 
@@ -206,6 +206,13 @@ if has("unix")
 else
         map <leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
 endif
+
+func StripTailWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfunc
 
 "定义函数SetTitle，自动插入文件头
 func SetTitle()

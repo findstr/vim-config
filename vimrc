@@ -5,10 +5,10 @@ set nocompatible
 
 set backspace=indent,eol,start
 
-"æ˜¾ç¤ºè¡Œå·
+"ÏÔÊ¾ĞĞºÅ
 set nu
 
-"æ ‡ç­¾
+"±êÇ©
 let g:miniBufExplMapWindowNavVim = 1 
 let g:miniBufExplMapWindowNavArrows = 1 
 let g:miniBufExplMapCTabSwitchBufs = 1 
@@ -19,36 +19,36 @@ let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
 
 
-"æ‰“å¼€è¯­æ³•é«˜äº®
+"´ò¿ªÓï·¨¸ßÁÁ
 syntax on
 "let asmsyntax="gas"
 let asmsyntax="nasm"
-"è®¾ç½®å­—ä½“
+"ÉèÖÃ×ÖÌå
 set guifont=DejaVu\ Sans\ Mono\ 12
 
-"è®¾ç½®ç¼©è¿›
+"ÉèÖÃËõ½ø
 set softtabstop=8
 set shiftwidth=8
-set expandtab
+set noexpandtab
 
-"å…³é—­toolbar
+"¹Ø±Õtoolbar
 set guioptions-=T
 
-"å…³é—­è‡ªåŠ¨å¤‡ä»½
+"¹Ø±Õ×Ô¶¯±¸·İ
 set nobackup
 
 set completeopt=longest,menu
 
-"è‡ªåŠ¨æ ¼å¼åŒ–
+"×Ô¶¯¸ñÊ½»¯
 set formatoptions=tcrqn
 
-"åœ¨è¡Œå’Œæ®µå¼€å§‹å¤„ä½¿ç”¨åˆ¶è¡¨ç¬¦
+"ÔÚĞĞºÍ¶Î¿ªÊ¼´¦Ê¹ÓÃÖÆ±í·û
 set smarttab
 
-"åœ¨normalæ¨¡å¼ä¸‹ä½¿ç”¨ç³»ç»Ÿå‰ªè´´æ¿
+"ÔÚnormalÄ£Ê½ÏÂÊ¹ÓÃÏµÍ³¼ôÌù°å
 "set clipboard+=unnamed
 
-"è‡ªåŠ¨ç¼©è¿›è®¾ç½®
+"×Ô¶¯Ëõ½øÉèÖÃ
 set cindent
 set smartindent
 set incsearch
@@ -69,37 +69,37 @@ set autoread
 "Enable filetype plugin
 filetype plugin indent on
 au BufRead,BufNewFile *.go set filetype=go
-"è®¾ç½®é…è‰²æ–¹æ¡ˆä¸ºtorte
+"ÉèÖÃÅäÉ«·½°¸Îªtorte
 "colo torte
 colo desert
 "colo tango
-"è®¾ç½®æ”¯æŒçš„æ–‡ä»¶ç¼–ç ç±»é¡¹ï¼Œç›®å‰è®¾ç½®ä¸ºutf-8å’Œgbkä¸¤ç§ç±»å‹
+"ÉèÖÃÖ§³ÖµÄÎÄ¼ş±àÂëÀàÏî£¬Ä¿Ç°ÉèÖÃÎªutf-8ºÍgbkÁ½ÖÖÀàĞÍ
 set fenc=utf-8
 set fileencodings=utf-8,chinese,gb18030,gbk,gb2312,cp936
 set enc=utf-8
 let &termencoding=&encoding
 
 
-"è®¾ç½®æ–­è¯
+"ÉèÖÃ¶Ï´Ê
 set linebreak
 
-"è®¾ç½®æœç´¢ç»“æœé«˜äº®æ˜¾ç¤º
+"ÉèÖÃËÑË÷½á¹û¸ßÁÁÏÔÊ¾
 set hlsearch
 
-"è®¾ç½®è®°å½•çš„å†å²æ“ä½œåˆ—è¡¨
+"ÉèÖÃ¼ÇÂ¼µÄÀúÊ·²Ù×÷ÁĞ±í
 set history=200
 
-"è®¾ç½®æŠ˜å 
+"ÉèÖÃÕÛµş
 set foldenable
 set foldcolumn=2
 set foldlevel=3
 
-"æ‰“å¼€ç›®å½•æ—¶ä¸æ˜¾ç¤ºéšè—ç›®å½•å’Œæ–‡ä»¶
+"´ò¿ªÄ¿Â¼Ê±²»ÏÔÊ¾Òş²ØÄ¿Â¼ºÍÎÄ¼ş
 let g:netrw_hide= 1
 let g:netrw_list_hide= '^\..*'
 
 "AutoCommand
-" é¼ æ ‡è·³åˆ°ä¸Šæ¬¡å…³é—­æ—¶ï¼Œç¼–è¾‘çš„ä½ç½®
+" Êó±êÌøµ½ÉÏ´Î¹Ø±ÕÊ±£¬±à¼­µÄÎ»ÖÃ
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -107,86 +107,90 @@ autocmd BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "normal g`\"" |
 \ endif
-"æ–°å»º.c,.h.cpp,.sh,.java,.php,.pyæ–‡ä»¶è‡ªåŠ¨æ‰“å¼€Taglist
+
+autocmd BufWritePre * :%s/\s\+$//e
+
+"ĞÂ½¨.c,.h.cpp,.sh,.java,.php,.pyÎÄ¼ş×Ô¶¯´ò¿ªTaglist
 autocmd BufNewFile *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":call SetTitle()"
-"è¯»å…¥.c,.h.cpp,.sh,.java,.php,.pyæ–‡ä»¶è‡ªåŠ¨æ‰“å¼€Taglist
+"¶ÁÈë.c,.h.cpp,.sh,.java,.php,.pyÎÄ¼ş×Ô¶¯´ò¿ªTaglist
 "autocmd BufRead *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":Tlist"
-"æ–°å»ºæ–‡ä»¶åï¼Œè‡ªåŠ¨å®šä½åˆ°æ–‡ä»¶æœ«å°¾
+"ĞÂ½¨ÎÄ¼şºó£¬×Ô¶¯¶¨Î»µ½ÎÄ¼şÄ©Î²
 autocmd BufNewFile * normal G
-"å¦‚æœæ˜¯æ–°å»ºçš„phpæ–‡ä»¶ï¼Œåˆ™è‡ªåŠ¨å®šä½åˆ°æœ€åç¬¬äºŒè¡Œ
+"Èç¹ûÊÇĞÂ½¨µÄphpÎÄ¼ş£¬Ôò×Ô¶¯¶¨Î»µ½×îºóµÚ¶şĞĞ
 autocmd BufNewFile *.php normal k
 
-"å†™å…¥.c,.h.cpp,.sh,.java,.php,.pyæ–‡ä»¶è‡ªåŠ¨æ›´æ–°Taglist
+"Ğ´Èë.c,.h.cpp,.sh,.java,.php,.pyÎÄ¼ş×Ô¶¯¸üĞÂTaglist
 autocmd BufWritePost *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":TlistUpdate"
 "
-"è¯»å…¥pythonæ–‡ä»¶ï¼Œè®¾ç½®ç¼©è¿›æ ¼å¼
+"¶ÁÈëpythonÎÄ¼ş£¬ÉèÖÃËõ½ø¸ñÊ½
 autocmd BufNewFile,BufRead *.py set cinwords=if,elif,else,for,while,try,expect,finally,def,class
 
-"è¯»å…¥Cæ–‡ä»¶ï¼Œè®¾ç½®æŠ˜å æ–¹å¼ä¸ºsyntax
+"¶ÁÈëCÎÄ¼ş£¬ÉèÖÃÕÛµş·½Ê½Îªsyntax
 autocmd BufNewFile,BufRead *.[ch],*.cpp set foldmethod=syntax
 
-"è¯»å…¥å…¶å®ƒæ–‡ä»¶ï¼Œè®¾ç½®æŠ˜å æ–¹å¼ä¸ºindent
+"¶ÁÈëÆäËüÎÄ¼ş£¬ÉèÖÃÕÛµş·½Ê½Îªindent
 autocmd BufNewFile,BufRead *.py,*.sh,*.java,*.php set foldmethod=indent
 
-"è®¾ç½®Javaä»£ç çš„è‡ªåŠ¨è¡¥å…¨
+"ÉèÖÃJava´úÂëµÄ×Ô¶¯²¹È«
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 "autocmd FileType java set tags=./tags,./../tags,./http://www.cnblogs.com/tags
 
-"è®¾ç½®è¾“å…¥ä»£ç çš„è‡ªåŠ¨è¡¥å…¨
+"ÉèÖÃÊäÈë´úÂëµÄ×Ô¶¯²¹È«
 "autocmd BufEnter * call DoWordComplete()
 set complete=.,w,b,u,t,i,k
 set completeopt=longest,menu
 
-"è®¾ç½®å½“å›å¤é‚®ä»¶æ—¶è‡ªåŠ¨å®šä½åˆ°æœ€åä¸€è¡Œ
+"ÉèÖÃµ±»Ø¸´ÓÊ¼şÊ±×Ô¶¯¶¨Î»µ½×îºóÒ»ĞĞ
 autocmd BufRead /tmp/mutt-* normal G
 "autocmd BufRead /tmp/mutt-* normal $ 
-"ç»‘å®šè‡ªåŠ¨è¡¥å…¨çš„å¿«æ·é”®<C-X><C-O>åˆ°<leader>;
+"°ó¶¨×Ô¶¯²¹È«µÄ¿ì½İ¼ü<C-X><C-O>µ½<leader>;
 imap <leader>; <C-X><C-O>
 
-"ç»‘å®šå¤åˆ¶åˆ°ç³»ç»Ÿå‰ªè´´æ¿å¿«æ·é”®
+"°ó¶¨¸´ÖÆµ½ÏµÍ³¼ôÌù°å¿ì½İ¼ü
 vmap <leader>c "+y
 nmap <leader>c "+y
 
-"ç»‘å®šç²˜è´´ç³»ç»Ÿå‰ªè´´æ¿å†…å®¹å¿«æ·é”®
-"imap <leader>v <ESC>"+p "ä¸è®¾ç½®insertæ¨¡å¼ä¸‹çš„å¿«æ·é”®ï¼Œå› ä¸ºä¼šé€ æˆæ— æ³•è¾“å…¥,v
+"°ó¶¨Õ³ÌùÏµÍ³¼ôÌù°åÄÚÈİ¿ì½İ¼ü
+"imap <leader>v <ESC>"+p "²»ÉèÖÃinsertÄ£Ê½ÏÂµÄ¿ì½İ¼ü£¬ÒòÎª»áÔì³ÉÎŞ·¨ÊäÈë,v
 vmap <leader>v <ESC>"+p
 nmap <leader>v "+p
 
-"è®¾å®šå¼€å…³Taglistæ’ä»¶çš„å¿«æ·é”®ä¸ºF4ï¼Œå¯ä»¥åœ¨VIMçš„å·¦ä¾§æ åˆ—å‡ºå‡½æ•°åˆ—è¡¨ç­‰
+"Éè¶¨¿ª¹ØTaglist²å¼şµÄ¿ì½İ¼üÎªF4£¬¿ÉÒÔÔÚVIMµÄ×ó²àÀ¸ÁĞ³öº¯ÊıÁĞ±íµÈ
 map <F4> :Tlist<CR>
 
-"è®¾ç½®ç¨‹åºçš„è¿è¡Œå’Œè°ƒè¯•çš„å¿«æ·é”®F5å’ŒCtrl-F5
+"ÉèÖÃ³ÌĞòµÄÔËĞĞºÍµ÷ÊÔµÄ¿ì½İ¼üF5ºÍCtrl-F5
 map <F5> :call CompileRun()<CR>
 map <C-F5> :call Debug()<CR>
-"è®¾ç½®æ‰‹åŠ¨æ›´æ–°tagsæ–‡ä»¶
+"ÉèÖÃÊÖ¶¯¸üĞÂtagsÎÄ¼ş
 map <F8> :!ctags -R * <CR>
 map <F9> :!splint % <CR>
-"è®¾ç½®tabæ“ä½œçš„å¿«æ·é”®ï¼Œç»‘å®š:tabnewåˆ°<leader>tï¼Œç»‘å®š:tabn, :tabpåˆ°<leader>n,
+"ÉèÖÃtab²Ù×÷µÄ¿ì½İ¼ü£¬°ó¶¨:tabnewµ½<leader>t£¬°ó¶¨:tabn, :tabpµ½<leader>n,
 "<leader>p
 map <leader>t :tabnew<CR>
 map <leader>n :tabn<CR>
 map <leader>p :tabp<CR>
 
-"è®¾ç½®ç©ºæ ¼é”®å¼€å…³æŠ˜å 
+"ÉèÖÃ¿Õ¸ñ¼ü¿ª¹ØÕÛµş
 nmap <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-"ä½¿ç”¨<leader>ræ‰“å¼€ä¸Šæ¬¡è¿è¡Œçš„å‘½ä»¤
+"Ê¹ÓÃ<leader>r´ò¿ªÉÏ´ÎÔËĞĞµÄÃüÁî
 nmap <leader>r :<UP>
 
 "-------Tags----------
-"ç”¨cscopeæ”¯æŒ
+"ÓÃcscopeÖ§³Ö
 set csprg=/usr/bin/cscope
 set updatetime=100
-let Tlist_Ctags_Cmd='/users/findstr/bin/ctags'
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
 let Tlist_Show_One_File=0
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
 let Tlist_Process_File_Always=1
-"é»˜è®¤æ‰“å¼€Taglist
+let Tlist_WinWidth=40
+"Ä¬ÈÏ´ò¿ªTaglist
 let Tlist_Auto_Open=1
 
-"è®¾ç½®æœç´¢çš„tagsæ–‡ä»¶èŒƒå›´
+"ÉèÖÃËÑË÷µÄtagsÎÄ¼ş·¶Î§
 set tags=./tags,./../tags,./../../tags,./../../../tags,./http://www.cnblogs.com/tags,/usr/include/tags,/usr/src/linux-3.2.6/include/tags
 
 "--MiniBufferExplorer--
@@ -196,24 +200,24 @@ let g:miniBufExplMapCTabSwitchBufs=1
 let g:miniBufExplMapCTabSwitchWindows=1
 let g:miniBufExplModSelTarget=1
 
-"ä½¿ç”¨<leader>eæ‰“å¼€å½“å‰æ–‡ä»¶åŒç›®å½•ä¸­çš„æ–‡ä»¶
+"Ê¹ÓÃ<leader>e´ò¿ªµ±Ç°ÎÄ¼şÍ¬Ä¿Â¼ÖĞµÄÎÄ¼ş
 if has("unix")
         map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 else
         map <leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
 endif
 
-"å®šä¹‰å‡½æ•°SetTitleï¼Œè‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´
+"¶¨Òåº¯ÊıSetTitle£¬×Ô¶¯²åÈëÎÄ¼şÍ·
 func SetTitle()
-        "å¦‚æœä¸ºphpæ–‡ä»¶ï¼Œæ·»åŠ ç›¸åº”å¤´å’Œå°¾
+        "Èç¹ûÎªphpÎÄ¼ş£¬Ìí¼ÓÏàÓ¦Í·ºÍÎ²
         if &filetype == 'php'
                 call append(0, "<?php")
                 call append(line("$"), "?>")
         endif
-        "å¦‚æœä¸ºshæ–‡ä»¶ï¼Œæ·»åŠ ç›¸åº”çš„å¤´
+        "Èç¹ûÎªshÎÄ¼ş£¬Ìí¼ÓÏàÓ¦µÄÍ·
         if &filetype == 'sh'
                 call append(0, "\#!/bin/bash")
-                "å¦‚æœä¸ºpythonæ–‡ä»¶ï¼Œæ·»åŠ ç›¸åº”çš„å¤´å’Œç¼–ç è®¾å®š
+                "Èç¹ûÎªpythonÎÄ¼ş£¬Ìí¼ÓÏàÓ¦µÄÍ·ºÍ±àÂëÉè¶¨
         elseif &filetype == 'python'
                 call append(0, "\#!/usr/bin/python")
                 call append(1, "\# -*- coding: utf-8 -*-")

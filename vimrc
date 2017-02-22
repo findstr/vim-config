@@ -31,6 +31,8 @@ set softtabstop=8
 set shiftwidth=8
 set noexpandtab
 
+
+
 "关闭toolbar
 set guioptions-=T
 
@@ -56,7 +58,7 @@ set autoindent
 set cinoptions=:0
 "Show matching bracets
 set showmatch
-
+set autochdir
 "Get out of VI's compatible mode
 set nocompatible
 
@@ -112,8 +114,7 @@ autocmd BufWritePre * :call StripTailWhitespaces()
 
 "新建.c,.h.cpp,.sh,.java,.php,.py文件自动打开Taglist
 autocmd BufNewFile *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":call SetTitle()"
-"读入.c,.h.cpp,.sh,.java,.php,.py文件自动打开Taglist
-"autocmd BufRead *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":Tlist"
+autocmd BufNewFile,BufRead *.[ch],*.cpp,*.sh,*.java,*.php,*.py exec ":call AddCscope()"
 "新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
 "如果是新建的php文件，则自动定位到最后第二行
@@ -133,7 +134,6 @@ autocmd BufNewFile,BufRead *.py,*.sh,*.java,*.php set foldmethod=indent
 
 "设置Java代码的自动补全
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-"autocmd FileType java set tags=./tags,./../tags,./http://www.cnblogs.com/tags
 
 "设置输入代码的自动补全
 "autocmd BufEnter * call DoWordComplete()
@@ -179,6 +179,7 @@ nmap <leader>r :<UP>
 "-------Tags----------
 "用cscope支持
 set csprg=/usr/bin/cscope
+set csto=1
 set updatetime=100
 let Tlist_Ctags_Cmd='/usr/bin/ctags'
 let Tlist_Show_One_File=0
@@ -191,7 +192,7 @@ let Tlist_WinWidth=40
 let Tlist_Auto_Open=1
 
 "设置搜索的tags文件范围
-set tags=./tags,./../tags,./../../tags,./../../../tags,./http://www.cnblogs.com/tags,/usr/include/tags,/usr/src/linux-3.2.6/include/tags
+set tags=./tags,./../tags,./../../tags,./../../../tags,/usr/include/tags,/usr/src/linux-3.2.6/include/tags
 
 "--MiniBufferExplorer--
 let g:miniBufExplMapWindowNavVim=1
@@ -230,6 +231,24 @@ func SetTitle()
                 call append(1, "\# -*- coding: utf-8 -*-")
         endif
 endfunc
+
+func AddCscope()
+	let n = 10
+	let dir = '../'
+	let i = 0
+	let fname = 'cscope.out'
+	while i < n
+		if filereadable(dir . fname)
+			set nocsverb
+			execute 'cs add ' . dir . fname
+			set csverb
+			execute 'lcd' . dir
+			break
+		endif
+		let dir = dir . '../'
+		let i = i + 1
+	endwhile
+endf
 
 "ececute project relate configuration in current directory
 if filereadable("workspace.vim")

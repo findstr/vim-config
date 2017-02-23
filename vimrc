@@ -31,8 +31,6 @@ set softtabstop=8
 set shiftwidth=8
 set noexpandtab
 
-
-
 "πÿ±’toolbar
 set guioptions-=T
 
@@ -81,6 +79,10 @@ set fileencodings=utf-8,chinese,gb18030,gbk,gb2312,cp936
 set enc=utf-8
 let &termencoding=&encoding
 
+"set cursorline
+
+set colorcolumn=81
+highlight colorcolumn ctermbg=LightBlue
 
 "…Ë÷√∂œ¥ 
 set linebreak
@@ -254,3 +256,5 @@ endf
 if filereadable("workspace.vim")
         source workspace.vim
 endif
+
+

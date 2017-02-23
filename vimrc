@@ -240,9 +240,9 @@ func AddCscope()
 	while i < n
 		if filereadable(dir . fname)
 			set nocsverb
-			execute 'cs add ' . dir . fname
+			execute 'cs add ' . dir . fname . ' ' . dir
+			"execute 'cs add ' . dir . fname
 			set csverb
-			execute 'lcd' . dir
 			break
 		endif
 		let dir = dir . '../'

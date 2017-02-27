@@ -56,7 +56,6 @@ set autoindent
 set cinoptions=:0
 "Show matching bracets
 set showmatch
-set autochdir
 "Get out of VI's compatible mode
 set nocompatible
 

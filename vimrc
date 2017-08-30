@@ -176,6 +176,8 @@ nmap <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 "使用<leader>r打开上次运行的命令
 nmap <leader>r :<UP>
+"gd + ctrl+o
+nnoremap F gd <C-O>
 
 "-------Tags----------
 "用cscope支持

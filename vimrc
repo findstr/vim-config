@@ -141,6 +141,12 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 set complete=.,w,b,u,t,i,k
 set completeopt=longest,menu
 
+set modeline
+set modelines=5
+
+set list
+set listchars=tab:\|\ ,trail:-,extends:>,precedes:<
+
 "设置当回复邮件时自动定位到最后一行
 autocmd BufRead /tmp/mutt-* normal G
 "autocmd BufRead /tmp/mutt-* normal $
